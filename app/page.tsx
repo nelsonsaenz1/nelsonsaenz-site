@@ -22,7 +22,7 @@ export default function Home() {
     <main className="relative">
       {/* Nav */}
       <header className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-6 sm:px-8">
-        <a href="#" className="font-mono text-sm text-muted hover:text-fg"><span className="sm:hidden">ns.dev</span><span className="hidden sm:inline">nelsonsaenz.dev</span></a>
+        <a href="#" className="font-mono text-sm text-muted hover:text-fg"><span className="sm:hidden">NS</span><span className="hidden sm:inline">Nelson Saenz</span></a>
         <nav className="flex gap-4 font-mono text-xs text-muted sm:gap-5">
           <a className="hover:text-fg" href="#work">Work</a>
           <a className="hover:text-fg" href="#stack">Stack</a>

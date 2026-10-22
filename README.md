@@ -1,4 +1,4 @@
-# nelsonsaenz.dev
+# nelsonsaenz-site
 
 Personal site for Nelson Saenz — product engineer & founder in NYC.
 

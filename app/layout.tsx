@@ -6,7 +6,7 @@ const description =
   "Product engineer and founder in NYC. I build AI-native products end to end and run them in production: Cinch (iOS AI stylist), MetaOrtho (GLP-1 telehealth), agentic workflows at Office Hours.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nelsonsaenz.dev"),
+  metadataBase: new URL("https://nelsonsaenz-site.vercel.app"),
   title,
   description,
   openGraph: { title, description, type: "website", url: "/" },
