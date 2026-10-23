@@ -1,5 +1,8 @@
 export const links = {
   email: "nelsonjsaenz@gmail.com",
+  phone: "(901) 831-0311",
+  phoneHref: "tel:+19018310311",
+  smsHref: "sms:+19018310311",
   github: "https://github.com/nelsonsaenz1",
   linkedin: "https://www.linkedin.com/in/nelson-saenz-28502a272/",
   resume: "/Nelson_Saenz_Resume.pdf",

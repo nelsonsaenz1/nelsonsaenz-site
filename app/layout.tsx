@@ -36,6 +36,7 @@ const personJsonLd = {
   url: siteUrl,
   image: `${siteUrl}/headshot.jpg`,
   email: "mailto:nelsonjsaenz@gmail.com",
+  telephone: "+1-901-831-0311",
   address: { "@type": "PostalAddress", addressLocality: "New York", addressRegion: "NY", addressCountry: "US" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Southern Methodist University, Cox School of Business" },
   sameAs: ["https://github.com/nelsonsaenz1", "https://www.linkedin.com/in/nelson-saenz-28502a272/"],

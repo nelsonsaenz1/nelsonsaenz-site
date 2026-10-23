@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import Card from "@/components/ui/Card";
@@ -189,12 +190,17 @@ export default function MetaOrthoPage() {
               <p className="mx-auto mt-5 max-w-xl text-lg text-white/80">I'm happy to walk through the assessment logic, the compliance work, or how the portal is put together.</p>
             </Reveal>
             <Reveal delay={0.15} className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={`mailto:${links.email}`} variant="white" size="lg">
+              <Button href={links.phoneHref} variant="white" size="lg">
+                Call or text {links.phone}
+              </Button>
+              <Button href={`mailto:${links.email}`} variant="outlineLight" size="lg">
                 {links.email}
               </Button>
-              <Button href="/" variant="outlineLight" size="lg">
-                Back to home
-              </Button>
+            </Reveal>
+            <Reveal delay={0.25} y={0} className="mt-6">
+              <Link href="/" className="text-sm text-white/55 transition-colors hover:text-white">
+                ← Back to home
+              </Link>
             </Reveal>
           </div>
         </section>

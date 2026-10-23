@@ -4,7 +4,6 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import BrandMark from "@/components/ui/BrandMark";
 import Reveal from "@/components/motion/Reveal";
-import AnimatedNumber from "@/components/motion/AnimatedNumber";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { Arrow, Bullets, Eyebrow, SectionHeading } from "@/components/ui/Text";
@@ -64,7 +63,7 @@ export default function Home() {
                 Resume (PDF)
               </Button>
             </Reveal>
-            <Reveal onMount y={0} delay={0.7} duration={0.6} className="mt-8 flex justify-center gap-6 text-sm text-white/55">
+            <Reveal onMount y={0} delay={0.7} duration={0.6} className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/55">
               <a href={links.github} target="_blank" rel="noreferrer" className="group transition-colors hover:text-white">
                 GitHub <Arrow />
               </a>
@@ -74,29 +73,10 @@ export default function Home() {
               <a href={`mailto:${links.email}`} className="transition-colors hover:text-white">
                 {links.email}
               </a>
+              <a href={links.phoneHref} className="transition-colors hover:text-white">
+                {links.phone}
+              </a>
             </Reveal>
-          </div>
-        </section>
-
-        {/* Proof strip */}
-        <section className="relative bg-cream py-16 md:py-20">
-          <div aria-hidden className="dot-grid-light absolute inset-0 opacity-[0.025]" />
-          <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 sm:px-8 lg:grid-cols-4 lg:px-12">
-            {[
-              { n: 3, label: "products shipped solo" },
-              { n: 900, suffix: "+", label: "GitHub contributions, last 12 months" },
-              { n: 28, label: "biomarkers in one 0–100 score" },
-              { n: 1535, label: "automated tests behind Cinch" },
-            ].map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08} y={16} amount={0.4}>
-                <Card padding="md" hover={false} className="h-full">
-                  <p className="font-serif text-4xl tracking-[-0.03em] text-ink">
-                    <AnimatedNumber value={s.n} suffix={s.suffix} />
-                  </p>
-                  <p className="mt-2 text-sm text-[var(--color-text-tertiary)]">{s.label}</p>
-                </Card>
-              </Reveal>
-            ))}
           </div>
         </section>
 
@@ -187,68 +167,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How I work */}
-        <section id="how" className="relative scroll-mt-20 bg-cream py-24 md:py-32">
+        {/* Experience */}
+        <section id="experience" className="relative scroll-mt-20 bg-cream py-24 md:py-32">
           <div aria-hidden className="dot-grid-light absolute inset-0 opacity-[0.025]" />
           <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-            <SectionHeading eyebrow="How I work" title="Find the slow, manual part. Build the system that removes it. Prove it until the team adopts it." />
-            <div className="grid gap-5 md:grid-cols-3">
-              {[
-                {
-                  h: "AI as a force multiplier, not an excuse.",
-                  p: "I use agents for parallel research, isolated worktrees, and verification, and I keep ownership of architecture, QA, product, and releases. The Cinch styling engine is deterministic and on-device; the model only does what it's actually better at.",
-                },
-                {
-                  h: "Production over demos.",
-                  p: "Row-level security with pgTAP tests, idempotent commands, subscription reconciliation, offline recovery, append-only migrations. Things that are boring until they aren't.",
-                },
-                {
-                  h: "Adoption is the metric.",
-                  p: "A tool nobody uses is a demo. I build internal tooling the way I build product: run it on real work first, measure the time it saves, and make it usable without me in the loop.",
-                },
-              ].map((item, i) => (
-                <Reveal key={item.h} delay={i * 0.08} y={16} amount={0.3}>
-                  <Card padding="md" className="h-full">
-                    <div className="mb-3 flex items-center gap-3">
-                      <span className="size-2 rounded-full bg-accent" />
-                      <h3 className="text-xl tracking-[-0.02em] text-ink">{item.h}</h3>
-                    </div>
-                    <p className="pl-5 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">{item.p}</p>
-                  </Card>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Stack */}
-        <section id="stack" className="relative scroll-mt-20 overflow-hidden bg-navy py-24 text-white md:py-32">
-          <div aria-hidden className="absolute right-0 top-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
-          <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-            <SectionHeading eyebrow="Stack" title="What I reach for" dark />
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-              {Object.entries(stack).map(([k, v], i) => (
-                <Reveal key={k} delay={i * 0.06} y={16} amount={0.3}>
-                  <h3 className="text-lg text-white">{k}</h3>
-                  <ul className="mt-4 space-y-2 text-[15px] text-white/75">
-                    {v.map((s) => (
-                      <li key={s} className="flex gap-3">
-                        <span aria-hidden className="mt-[0.65em] size-1.5 shrink-0 rounded-full bg-sky" />
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section id="experience" className="scroll-mt-20 bg-white py-24 md:py-32">
-          <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
             <SectionHeading eyebrow="Experience" title="Where I've worked" />
-            <ol className="divide-y divide-line border-y border-line">
+            <ol className="divide-y divide-line border-y border-line-strong">
               {experience.map((e, i) => (
                 <Reveal key={e.company + e.role} delay={Math.min(i, 3) * 0.05} y={16} amount={0.2}>
                   <li className="grid gap-4 py-8 sm:grid-cols-[1fr_2fr] sm:gap-10">
@@ -296,6 +220,39 @@ export default function Home() {
           </div>
         </section>
 
+        {/* How I work */}
+        <section id="how" className="relative scroll-mt-20 bg-white py-24 md:py-32">
+          <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
+            <SectionHeading eyebrow="How I work" title="Find the slow, manual part. Build the system that removes it. Prove it until the team adopts it." />
+            <div className="grid gap-5 md:grid-cols-3">
+              {[
+                {
+                  h: "AI as a force multiplier, not an excuse.",
+                  p: "I use agents for parallel research, isolated worktrees, and verification, and I keep ownership of architecture, QA, product, and releases. The Cinch styling engine is deterministic and on-device; the model only does what it's actually better at.",
+                },
+                {
+                  h: "Production over demos.",
+                  p: "Row-level security with pgTAP tests, idempotent commands, subscription reconciliation, offline recovery, append-only migrations. Things that are boring until they aren't.",
+                },
+                {
+                  h: "Adoption is the metric.",
+                  p: "A tool nobody uses is a demo. I build internal tooling the way I build product: run it on real work first, measure the time it saves, and make it usable without me in the loop.",
+                },
+              ].map((item, i) => (
+                <Reveal key={item.h} delay={i * 0.08} y={16} amount={0.3}>
+                  <Card tone="cream" padding="md" className="h-full">
+                    <div className="mb-3 flex items-center gap-3">
+                      <span className="size-2 rounded-full bg-accent" />
+                      <h3 className="text-xl tracking-[-0.02em] text-ink">{item.h}</h3>
+                    </div>
+                    <p className="pl-5 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">{item.p}</p>
+                  </Card>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Education */}
         <section id="education" className="relative scroll-mt-20 bg-cream py-24 md:py-32">
           <div aria-hidden className="dot-grid-light absolute inset-0 opacity-[0.025]" />
@@ -327,8 +284,31 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Stack */}
+        <section id="stack" className="relative scroll-mt-20 overflow-hidden bg-navy py-24 text-white md:py-32">
+          <div aria-hidden className="absolute right-0 top-0 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+          <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
+            <SectionHeading eyebrow="Stack" title="What I reach for" dark />
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+              {Object.entries(stack).map(([k, v], i) => (
+                <Reveal key={k} delay={i * 0.06} y={16} amount={0.3}>
+                  <h3 className="text-lg text-white">{k}</h3>
+                  <ul className="mt-4 space-y-2 text-[15px] text-white/75">
+                    {v.map((s) => (
+                      <li key={s} className="flex gap-3">
+                        <span aria-hidden className="mt-[0.65em] size-1.5 shrink-0 rounded-full bg-sky" />
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Contact */}
-        <section id="contact" className="relative scroll-mt-20 overflow-hidden bg-navy py-28 text-white md:py-36">
+        <section id="contact" className="relative scroll-mt-20 overflow-hidden border-t border-white/10 bg-navy py-28 text-white md:py-36">
           <div aria-hidden className="pointer-events-none absolute inset-0">
             <div className="absolute left-1/2 top-1/2 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[160px]" />
           </div>
@@ -341,19 +321,26 @@ export default function Home() {
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
                 I'm open to anything where I get to build and own outcomes: product, engineering, operations, or a founding team.
-                Based in New York, happy with on-site, hybrid, or remote. Email is fastest. Everything on this page is in the
-                resume, and the code behind Cinch, MetaOrtho, and Soval is public on GitHub.
+                Based in New York, happy with on-site, hybrid, or remote. Call or text any time, seriously. I pick up for
+                unknown numbers. Email works too. Everything on this page is in the resume, and the code behind Cinch,
+                MetaOrtho, and Soval is public on GitHub.
               </p>
             </Reveal>
             <Reveal delay={0.15} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={`mailto:${links.email}`} variant="white" size="lg">
+              <Button href={links.phoneHref} variant="white" size="lg">
+                Call or text {links.phone}
+              </Button>
+              <Button href={`mailto:${links.email}`} variant="outlineLight" size="lg">
                 {links.email}
               </Button>
-              <Button href={links.resume} download variant="outlineLight" size="lg">
-                Download resume
-              </Button>
             </Reveal>
-            <Reveal delay={0.25} y={0} className="mt-8 flex justify-center gap-6 text-sm text-white/55">
+            <Reveal delay={0.25} y={0} className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/55">
+              <a href={links.smsHref} className="transition-colors hover:text-white">
+                Text me
+              </a>
+              <a href={links.resume} download className="transition-colors hover:text-white">
+                Download resume
+              </a>
               <a href={links.linkedin} target="_blank" rel="noreferrer" className="group transition-colors hover:text-white">
                 LinkedIn <Arrow />
               </a>

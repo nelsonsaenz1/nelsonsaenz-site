@@ -4,8 +4,8 @@ import { links } from "@/lib/content";
 
 const homeNav = [
   ["Work", "/#work"],
-  ["How I work", "/#how"],
   ["Experience", "/#experience"],
+  ["How I work", "/#how"],
   ["Education", "/#education"],
   ["Contact", "/#contact"],
 ] as const;
