@@ -51,9 +51,9 @@ export default function Home() {
             </Reveal>
             <Reveal onMount y={20} delay={0.35} duration={0.8}>
               <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed tracking-[-0.01em] text-white/80 md:text-xl">
-                Product engineer and founder. Solo-shipped a consumer iOS app to the App Store, engineered a physician-led
-                telehealth platform from zero, and turned my day job at an expert network into an agentic AI system the whole
-                team uses. Finance background, so I care about conversion and retention as much as the code.
+                Founder and builder. Solo-shipped a consumer iOS app to the App Store, engineered a physician-led telehealth
+                platform from zero, and work in client solutions at an expert network by day. Finance background, so I care
+                about conversion and retention as much as the code.
               </p>
             </Reveal>
             <Reveal onMount y={16} delay={0.5} className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
@@ -86,12 +86,12 @@ export default function Home() {
               { n: 3, label: "products shipped solo" },
               { n: 900, suffix: "+", label: "GitHub contributions, last 12 months" },
               { n: 28, label: "biomarkers in one 0–100 score" },
-              { text: "hrs → min", label: "project setup at Office Hours" },
+              { n: 1535, label: "automated tests behind Cinch" },
             ].map((s, i) => (
               <Reveal key={s.label} delay={i * 0.08} y={16} amount={0.4}>
                 <Card padding="md" hover={false} className="h-full">
                   <p className="font-serif text-4xl tracking-[-0.03em] text-ink">
-                    {"n" in s && s.n !== undefined ? <AnimatedNumber value={s.n} suffix={s.suffix} /> : s.text}
+                    <AnimatedNumber value={s.n} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 text-sm text-[var(--color-text-tertiary)]">{s.label}</p>
                 </Card>
@@ -204,7 +204,7 @@ export default function Home() {
                 },
                 {
                   h: "Adoption is the metric.",
-                  p: "At Office Hours I didn't pitch AI. I ran it on live projects, showed the hours saved, and standardized it so an AI-skeptical team could use it without me in the loop.",
+                  p: "A tool nobody uses is a demo. I build internal tooling the way I build product: run it on real work first, measure the time it saves, and make it usable without me in the loop.",
                 },
               ].map((item, i) => (
                 <Reveal key={item.h} delay={i * 0.08} y={16} amount={0.3}>

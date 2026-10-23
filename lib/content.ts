@@ -62,14 +62,14 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: "Agentic OS for Office Hours",
-    logo: { src: "/logos/officehours-icon.png", alt: "Office Hours logo" },
+    name: "Internal tooling at Office Hours",
+    logo: { src: "/logos/officehours.svg", alt: "Office Hours logo" },
     role: "Client Solutions Associate",
     period: "2026 — now",
-    tagline: "Turned an expert-network workflow into an AI operating system the whole team adopted.",
+    tagline: "Small AI-assisted tools that take repetitive steps out of expert-network project work.",
     body:
-      "Designed and deployed versioned context files, custom skills, and automated document pipelines that turn raw client briefs into platform-ready builds in minutes. Shipped 4 production skills through 11+ versions in 30 days, encoding sourcing methodology, screening standards, and MNPI compliance guardrails. Standardized colleagues' playbooks into shared tooling: outreach template libraries, a merged expert-sourcing skill, and a Notion tracker with auto-computing traction metrics. Won adoption from AI-skeptical teammates by running it on live projects.",
-    stack: ["Claude Code", "MCP", "Custom skills", "Notion", "Gmail", "Quo"],
+      "Alongside the day job: reusable prompts and document templates that help turn a client brief into a structured project setup, shared outreach templates, and a simple Notion tracker. Built for my own workflow first and shared with teammates where it was useful.",
+    stack: ["Claude Code", "Custom skills", "Notion"],
     links: [],
   },
   {
@@ -137,15 +137,14 @@ export const experience: Experience[] = [
   },
   {
     company: "Office Hours",
-    logo: { src: "/logos/officehours-icon.png", alt: "Office Hours logo" },
+    logo: { src: "/logos/officehours.svg", alt: "Office Hours logo" },
     href: "https://officehours.com",
     role: "Client Solutions Associate",
     period: "2026 — Present",
     where: "New York",
     highlights: [
-      "Designed and deployed an agentic AI operating system for expert-network project execution that turns raw client briefs into platform-ready builds in minutes.",
-      "Built 4 production AI skills through 11+ versions in 30 days, encoding sourcing methodology, screening standards, and MNPI compliance guardrails.",
-      "Standardized individual playbooks into team tooling adopted across the pod: outreach template libraries, a merged sourcing skill, and a Notion tracker with auto-computing metrics.",
+      "Run expert-network projects end to end for investor and corporate clients: scoping briefs, sourcing and screening experts, and coordinating calls.",
+      "Built AI-assisted templates and a project tracker for my own workflow and shared them with teammates where they helped.",
     ],
   },
   {
@@ -183,7 +182,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Broadway Bank",
-    logo: { src: "/logos/broadwaybank.png", alt: "Broadway Bank logo" },
+    logo: { src: "/logos/broadwaybank.svg", alt: "Broadway Bank logo" },
     role: "Private Wealth Management Intern",
     period: "May — Jul 2025",
     where: "San Antonio",

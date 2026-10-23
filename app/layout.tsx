@@ -15,9 +15,9 @@ const dmSerif = DM_Serif_Display({
 });
 
 const siteUrl = "https://nelsonsaenz.vercel.app";
-const title = "Nelson Saenz — Product Engineer & Founder";
+const title = "Nelson Saenz — Founder & Builder";
 const description =
-  "Product engineer and founder in NYC. I build AI-native products end to end and run them in production: Cinch (iOS AI stylist), MetaOrtho (GLP-1 telehealth), agentic workflows at Office Hours.";
+  "Founder and builder in NYC. I build AI-native products end to end and run them in production: Cinch (iOS outfit planner on the App Store) and MetaOrtho (physician-led GLP-1 telehealth).";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -32,7 +32,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Nelson Saenz",
-  jobTitle: "Product Engineer & Founder",
+  jobTitle: "Founder & Builder",
   url: siteUrl,
   image: `${siteUrl}/headshot.jpg`,
   email: "mailto:nelsonjsaenz@gmail.com",
