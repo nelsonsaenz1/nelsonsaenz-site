@@ -3,6 +3,7 @@ export const links = {
   github: "https://github.com/nelsonsaenz1",
   linkedin: "https://www.linkedin.com/in/nelson-saenz-28502a272/",
   resume: "/Nelson_Saenz_Resume.pdf",
+  site: "https://nelsonsaenz.vercel.app",
 };
 
 export type Project = {
@@ -25,7 +26,10 @@ export const projects: Project[] = [
     body:
       "Built, shipped, and operate it solo. The styling engine is deterministic and runs on-device: perceptual colour math in OKLCH, a beam search over the closet, and a linear model over named features that learns from every thumbs-up. A language model is used only to read a photo of a garment and write a sentence about a look the engine already chose. Row-level security is the security model, proven by pgTAP tests across four roles. Social layer: shared closets, event outfit voting, borrow requests.",
     stack: ["React Native", "Expo", "TypeScript", "Supabase", "PostgreSQL", "Edge Functions", "EAS", "App Store"],
-    links: [{ label: "GitHub", href: "https://github.com/nelsonsaenz1/cinch" }],
+    links: [
+      { label: "cinchstyle.com", href: "https://cinchstyle.com" },
+      { label: "GitHub", href: "https://github.com/nelsonsaenz1/cinch" },
+    ],
     featured: true,
   },
   {
@@ -37,7 +41,7 @@ export const projects: Project[] = [
       "Solely designed and engineered the product end to end: marketing site, branching clinical assessment with tiered risk scoring, patient-portal dashboard, and cash-pay booking and checkout. Built a longitudinal health dashboard that rolls 28 biomarkers across six body systems into a single 0–100 GLP-1 Optimization Score with DEXA, lab, visit, and side-effect tracking. Took the site through LegitScript healthcare certification and helped two board-certified physicians launch from zero.",
     stack: ["Next.js", "TypeScript", "Supabase", "Vercel", "LegitScript"],
     links: [
-      { label: "Live site", href: "https://metaortho.vercel.app" },
+      { label: "metaortho.com", href: "https://metaortho.com" },
       { label: "GitHub", href: "https://github.com/nelsonsaenz1/metaortho" },
     ],
     featured: true,
@@ -59,7 +63,10 @@ export const projects: Project[] = [
     tagline: "Done-for-you personal AI assistants and small-business automation.",
     body: "Marketing site plus an Agent Fit Quiz that scopes what an AI assistant could take off a small business owner's plate.",
     stack: ["Next.js", "TypeScript", "Vercel"],
-    links: [{ label: "GitHub", href: "https://github.com/nelsonsaenz1/soval-ai" }],
+    links: [
+      { label: "Live site", href: "https://soval-ai.vercel.app" },
+      { label: "GitHub", href: "https://github.com/nelsonsaenz1/soval-ai" },
+    ],
   },
   {
     name: "Glacwell",
@@ -81,14 +88,103 @@ export const projects: Project[] = [
   },
 ];
 
-export const experience = [
-  { company: "Cinch", role: "Founder & Product Engineer", period: "2026 — Present", where: "New York" },
-  { company: "Office Hours", role: "Client Solutions Associate", period: "2026 — Present", where: "New York" },
-  { company: "MetaOrtho", role: "Co-Founder, Product & Engineering Lead", period: "2025 — Present", where: "Remote" },
-  { company: "Glacwell", role: "CEO & Founder", period: "2026 — Present", where: "Dallas" },
-  { company: "Better Brain", role: "Start-up Intern", period: "Summer 2025", where: "New York" },
-  { company: "Broadway Bank", role: "Private Wealth Management Intern", period: "Summer 2025", where: "San Antonio" },
-  { company: "Hey! Food is Ready", role: "Summer Intern", period: "Summer 2024", where: "London" },
+export type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  where: string;
+  highlights: string[];
+  href?: string;
+};
+
+export const experience: Experience[] = [
+  {
+    company: "Cinch",
+    role: "Founder & Product Engineer",
+    period: "2026 — Present",
+    where: "New York",
+    href: "https://cinchstyle.com",
+    highlights: [
+      "Built, shipped, and operate a production consumer iOS styling app end to end: React Native, Expo, TypeScript, Supabase/PostgreSQL, AI systems, subscriptions, analytics, and App Store releases.",
+      "Engineered a closet-grounded AI styling system with structured outputs, fallback models, usage limits, and cost controls in production.",
+      "Implemented row-level security, transactional writes, idempotent commands, subscription reconciliation, and offline recovery; manage migrations and TestFlight/App Store releases.",
+    ],
+  },
+  {
+    company: "Office Hours",
+    role: "Client Solutions Associate",
+    period: "2026 — Present",
+    where: "New York",
+    highlights: [
+      "Designed and deployed an agentic AI operating system for expert-network project execution that turns raw client briefs into platform-ready builds in minutes.",
+      "Built 4 production AI skills through 11+ versions in 30 days, encoding sourcing methodology, screening standards, and MNPI compliance guardrails.",
+      "Standardized individual playbooks into team tooling adopted across the pod: outreach template libraries, a merged sourcing skill, and a Notion tracker with auto-computing metrics.",
+    ],
+  },
+  {
+    company: "MetaOrtho",
+    role: "Co-Founder, Product & Engineering Lead",
+    period: "2025 — Present",
+    where: "Remote",
+    href: "https://metaortho.com",
+    highlights: [
+      "Solely designed, engineered, and shipped a physician-led GLP-1 telehealth product: marketing site, branching clinical assessment with tiered risk scoring, patient portal, and cash-pay booking and checkout.",
+      "Built a longitudinal health dashboard that rolls 28 biomarkers across six body systems into a single 0–100 score with DEXA, lab, visit, and side-effect tracking.",
+    ],
+  },
+  {
+    company: "Glacwell",
+    role: "CEO & Founder",
+    period: "2026 — Present",
+    where: "Dallas",
+    highlights: [
+      "Founded an autonomous e-commerce operation run by AI agents that handle product research, ad optimization, and daily store operations, with a single store manager providing human oversight.",
+    ],
+  },
+  {
+    company: "Better Brain",
+    role: "Start-up Intern",
+    period: "Jul — Aug 2025",
+    where: "New York",
+    highlights: [
+      "Built and launched a complete e-commerce storefront from scratch and sourced 15+ manufacturers and wholesalers to stand up supplement manufacturing and fulfillment.",
+    ],
+  },
+  {
+    company: "Broadway Bank",
+    role: "Private Wealth Management Intern",
+    period: "May — Jul 2025",
+    where: "San Antonio",
+    highlights: [
+      "Built custom portfolio models in Fi-Tek GWES, trained portfolio managers on them, and introduced AI-driven strategy and model creation to support a $3.6B asset allocation meeting.",
+    ],
+  },
+  {
+    company: "Hey! Food is Ready",
+    role: "Summer Intern",
+    period: "Jul — Aug 2024",
+    where: "London",
+    highlights: [
+      "Generated 20% additional revenue by expanding the client base through market analysis and outreach; worked with the CEO on the business model and second-round investor materials.",
+    ],
+  },
+];
+
+export const education = {
+  school: "Southern Methodist University, Cox School of Business",
+  degree: "BBA, Finance",
+  graduation: "May 2026",
+  where: "Dallas, TX",
+  details: [
+    "3.80 / 4.00 cumulative GPA, maintained while founding two companies and completing four internships",
+    "EnCap Investments & LCM Group Alternative Asset Management Center Program, a selective alternative-asset honors program",
+    "Second Century Scholar, awarded to select first-year students for academics, character, and achievement",
+    "Finance Club · Private Equity & Venture Capital Club · Sigma Alpha Epsilon",
+  ],
+};
+
+export const certifications = [
+  "Wall Street Prep Financial & Valuation Modeling (DCF, M&A, LBO, Trading Comps)",
 ];
 
 export const stack = {

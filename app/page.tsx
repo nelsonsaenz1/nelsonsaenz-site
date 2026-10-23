@@ -1,4 +1,5 @@
-import { experience, links, projects, stack } from "@/lib/content";
+import Image from "next/image";
+import { certifications, education, experience, links, projects, stack } from "@/lib/content";
 
 function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string; title: string; children: React.ReactNode }) {
   return (
@@ -27,16 +28,29 @@ export default function Home() {
           <a className="hover:text-fg" href="#work">Work</a>
           <a className="hover:text-fg" href="#stack">Stack</a>
           <a className="hover:text-fg" href="#experience">Experience</a>
+          <a className="hidden hover:text-fg sm:inline" href="#education">Education</a>
           <a className="hover:text-fg" href="#contact">Contact</a>
         </nav>
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 mx-auto w-full max-w-5xl px-5 pb-16 pt-14 sm:px-8 sm:pt-24">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Nelson Saenz · New York</p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-          I build AI-native products end to end, then run them in production.
-        </h1>
+      <section className="relative z-10 mx-auto w-full max-w-5xl px-5 pb-16 pt-10 sm:px-8 sm:pt-20">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          <div className="order-2 sm:order-1">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Nelson Saenz · New York</p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+              I build AI-native products end to end, then run them in production.
+            </h1>
+          </div>
+          <Image
+            src="/headshot.jpg"
+            alt="Nelson Saenz"
+            width={566}
+            height={566}
+            priority
+            className="order-1 size-24 shrink-0 rounded-full border border-line object-cover ring-4 ring-accent/15 sm:order-2 sm:mt-1 sm:size-40 md:size-44"
+          />
+        </div>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           Product engineer and founder. Solo-shipped a consumer iOS app to the App Store, engineered a physician-led
           telehealth platform from zero, and turned my day job at an expert network into an agentic AI system the
@@ -155,29 +169,69 @@ export default function Home() {
       <Section id="experience" eyebrow="Experience" title="Where I've worked">
         <ol className="divide-y divide-line border-y border-line">
           {experience.map((e) => (
-            <li key={e.company + e.role} className="grid gap-1 py-4 sm:grid-cols-[1fr_1.4fr_auto] sm:items-baseline sm:gap-6">
-              <span className="font-medium">{e.company}</span>
-              <span className="text-sm text-muted">{e.role}</span>
-              <span className="font-mono text-xs text-muted">{e.period} · {e.where}</span>
+            <li key={e.company + e.role} className="grid gap-3 py-6 sm:grid-cols-[1fr_2fr] sm:gap-8">
+              <div>
+                <p className="font-medium">
+                  {e.href ? (
+                    <a href={e.href} target="_blank" rel="noreferrer" className="group underline-offset-4 hover:underline">
+                      {e.company} <Arrow />
+                    </a>
+                  ) : (
+                    e.company
+                  )}
+                </p>
+                <p className="mt-0.5 text-sm text-accent">{e.role}</p>
+                <p className="mt-1 font-mono text-xs text-muted">{e.period} · {e.where}</p>
+              </div>
+              <ul className="space-y-2 text-sm leading-relaxed text-muted">
+                {e.highlights.map((h) => (
+                  <li key={h} className="flex gap-3">
+                    <span aria-hidden className="mt-[0.6em] size-1 shrink-0 rounded-full bg-accent" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ol>
         <p className="mt-6 text-sm text-muted">
-          SMU Cox School of Business, BBA Finance (May 2026). 3.80 GPA. EnCap Investments & LCM Group Alternative Asset
-          Management Program. Second Century Scholar. Wall Street Prep Financial & Valuation Modeling.
+          Full detail, dates, and references in the <a href={links.resume} className="text-fg underline underline-offset-4">resume (PDF)</a>.
         </p>
+      </Section>
+
+      {/* Education */}
+      <Section id="education" eyebrow="Education" title={education.school}>
+        <div className="grid gap-6 sm:grid-cols-[1fr_2fr] sm:gap-8">
+          <div>
+            <p className="font-medium">{education.degree}</p>
+            <p className="mt-1 font-mono text-xs text-muted">{education.graduation} · {education.where}</p>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-muted">Certifications</p>
+            <ul className="mt-2 space-y-1 text-sm text-muted">
+              {certifications.map((c) => <li key={c}>{c}</li>)}
+            </ul>
+          </div>
+          <ul className="space-y-2 text-sm leading-relaxed text-muted">
+            {education.details.map((d) => (
+              <li key={d} className="flex gap-3">
+                <span aria-hidden className="mt-[0.6em] size-1 shrink-0 rounded-full bg-accent" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Section>
 
       {/* Contact */}
       <Section id="contact" eyebrow="Contact" title="Hiring for product engineering, founding engineer, or forward-deployed roles?">
         <p className="max-w-2xl text-muted">
-          I'm in New York and open to on-site, hybrid, or remote. The fastest way to reach me is email.
+          I'm in New York and open to on-site, hybrid, or remote. The fastest way to reach me is email. Everything on
+          this page is in the resume, and the code behind Cinch, MetaOrtho, and Soval is public on GitHub.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a href={`mailto:${links.email}`} className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-bg hover:opacity-90">{links.email}</a>
           <a href={links.linkedin} target="_blank" rel="noreferrer" className="rounded-full border border-line px-5 py-2.5 text-sm hover:border-muted">LinkedIn</a>
           <a href={links.github} target="_blank" rel="noreferrer" className="rounded-full border border-line px-5 py-2.5 text-sm hover:border-muted">GitHub</a>
-          <a href={links.resume} className="rounded-full border border-line px-5 py-2.5 text-sm hover:border-muted">Resume</a>
+          <a href={links.resume} download className="rounded-full border border-line px-5 py-2.5 text-sm hover:border-muted">Download resume</a>
         </div>
       </Section>
 
