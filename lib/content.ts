@@ -231,3 +231,12 @@ export const stack = {
   "AI": ["Claude Code", "MCP", "Custom skills", "Structured outputs", "Evals", "Multi-agent orchestration"],
   "Business": ["Financial modeling (DCF, LBO, comps)", "Subscription analytics", "Client solutions"],
 };
+
+/** Shown under the hero and in the footer so the site never looks abandoned. Update the date when you touch content. */
+export const updated = "October 2026";
+
+export const now = [
+  "Shipping Cinch updates to the App Store",
+  "Running MetaOrtho in production",
+  "Client solutions at Office Hours by day",
+];

@@ -7,7 +7,7 @@ import Reveal from "@/components/motion/Reveal";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { Arrow, Bullets, Eyebrow, SectionHeading } from "@/components/ui/Text";
-import { certifications, education, experience, links, projects, stack } from "@/lib/content";
+import { certifications, education, experience, links, now, projects, stack, updated } from "@/lib/content";
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured);
@@ -76,6 +76,16 @@ export default function Home() {
               <a href={links.phoneHref} className="transition-colors hover:text-white">
                 {links.phone}
               </a>
+            </Reveal>
+            <Reveal onMount y={0} delay={0.85} duration={0.6} className="mt-10">
+              <dl className="mx-auto inline-flex max-w-3xl flex-col items-center gap-2 rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] px-5 py-3 text-sm sm:flex-row sm:gap-x-5">
+                <dt className="whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] text-sky">Now · {updated}</dt>
+                <dd className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-white/70">
+                  {now.map((n) => (
+                    <span key={n}>{n}</span>
+                  ))}
+                </dd>
+              </dl>
             </Reveal>
           </div>
         </section>

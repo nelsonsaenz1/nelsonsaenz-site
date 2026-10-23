@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { links } from "@/lib/content";
+import { links, updated } from "@/lib/content";
 
 export default function SiteFooter() {
   return (
     <footer className="bg-navy-deep py-8 text-sm text-white/45">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 sm:flex-row sm:px-8 lg:px-12">
-        <p>© {new Date().getFullYear()} Nelson Saenz · Built with Next.js, deployed on Vercel.</p>
+        <p>© {new Date().getFullYear()} Nelson Saenz · Built with Next.js, deployed on Vercel · Updated {updated}.</p>
         <nav className="flex flex-wrap justify-center gap-5">
           <a href={links.phoneHref} className="transition-colors hover:text-white">
             {links.phone}

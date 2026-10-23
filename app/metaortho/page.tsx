@@ -6,7 +6,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { Bullets } from "@/components/ui/Text";
-import { BrowserFrame, CaseHero, CaseSection, Chips, FactGrid, NextCase, PhoneFrame, Split, StatStrip, type Shot } from "@/components/case/CaseStudy";
+import { BrowserFrame, CaseHero, CaseSection, Chips, FactGrid, NextCase, PhoneFrame, Split, StatStrip, VideoFrame, type Shot } from "@/components/case/CaseStudy";
 import { links } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -98,6 +98,22 @@ export default function MetaOrthoPage() {
         </CaseSection>
 
         <CaseSection tone="cream" eyebrow="Screens" title="The patient journey" intro="Captured from the live site. The full flow runs from a free assessment to a booked consult to a longitudinal portal.">
+          <div className="mb-14 grid gap-8 lg:grid-cols-[1.25fr_1fr] lg:items-center">
+            <Reveal y={20}>
+              <VideoFrame src="/metaortho/assessment-flow.mp4" poster="/metaortho/assessment-flow-poster.jpg" url="metaortho.com/assessment" label="Screen recording of the GLP-1 Management Profile assessment: answering age, sex, height, weight, and GLP-1 history questions as the progress bar advances" />
+            </Reveal>
+            <Reveal y={16} delay={0.1}>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-accent">In motion</p>
+              <h3 className="text-3xl tracking-[-0.02em] text-ink">The assessment, as a patient sees it</h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
+                One question per screen, a single tap to answer, and the next question slides in before the hand leaves the phone. Branching logic decides
+                what to ask next, so nobody sees a question that does not apply to them.
+              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
+                Recorded on the live site in October 2026, with example answers.
+              </p>
+            </Reveal>
+          </div>
           <div className="grid gap-8 lg:grid-cols-2">
             <Reveal y={20}>
               <BrowserFrame shot={assessment} url="metaortho.com/assessment" />

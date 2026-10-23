@@ -6,7 +6,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { Bullets } from "@/components/ui/Text";
-import { BrowserFrame, CaseHero, CaseSection, Chips, FactGrid, NextCase, PhoneFrame, PhoneStrip, Split, StatStrip, type Shot } from "@/components/case/CaseStudy";
+import { BrowserFrame, CaseHero, CaseSection, Chips, FactGrid, NextCase, PhoneFrame, PhoneStrip, Split, StatStrip, VideoFrame, type Shot } from "@/components/case/CaseStudy";
 import { links } from "@/lib/content";
 
 const appStore = "https://apps.apple.com/us/app/cinch-outfit-planner-closet/id6798479578";
@@ -62,10 +62,10 @@ export default function CinchPage() {
 
         <StatStrip
           stats={[
-            { n: 1258, label: "unit tests on the pure logic" },
-            { n: 277, label: "pgTAP tests across four database roles" },
-            { n: 123, label: "migrations, applied in order, never edited" },
-            { n: 21, label: "Supabase Edge Functions in production" },
+            { n: 5, suffix: ".0", label: "App Store rating, every review five stars" },
+            { n: 100, suffix: "+", label: "closets created since the August 2026 launch" },
+            { n: 800, suffix: "+", label: "garments photographed, tagged, and catalogued" },
+            { n: 1400, suffix: "+", label: "AI calls served, each one metered and capped" },
           ]}
         />
 
@@ -114,6 +114,22 @@ export default function CinchPage() {
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--color-text-secondary)]">App Store screenshots from the current release. Swipe through on mobile.</p>
             </Reveal>
             <PhoneStrip shots={screens} />
+            <div className="mt-16 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+              <Reveal y={20}>
+                <VideoFrame kind="phone" src="/cinch/tour.mp4" poster="/cinch/tour-poster.jpg" label="A tour through Cinch's Today, Closet, Stylist, Friends, and Plan screens" className="mx-auto w-[240px] sm:w-[270px]" />
+              </Reveal>
+              <Reveal y={16} delay={0.1}>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-accent">In motion</p>
+                <h3 className="text-3xl tracking-[-0.02em] text-ink">Ten pieces in, one outfit out</h3>
+                <p className="mt-4 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
+                  The morning outfit, the closet grid, a stylist answer built only from clothes the person owns, a friends event with votes, and the week planned
+                  on a calendar. Every screen is from the shipping build.
+                </p>
+                <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
+                  Open the app and the engine has already dressed you for the forecast and the day's calendar, with a one-line reason you can argue with.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </section>
 

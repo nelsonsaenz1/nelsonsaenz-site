@@ -198,6 +198,34 @@ export function BrowserFrame({ shot, url, priority = false, className = "" }: { 
   );
 }
 
+/** Muted, looping screen recording inside a browser chrome or a phone bezel. Falls back to the poster when autoplay is blocked. */
+export function VideoFrame({ src, poster, kind = "browser", url, caption, className = "", label }: { src: string; poster: string; kind?: "browser" | "phone"; url?: string; caption?: string; className?: string; label: string }) {
+  const video = (
+    <video src={src} poster={poster} autoPlay muted loop playsInline preload="metadata" aria-label={label} className={kind === "phone" ? "block h-auto w-full rounded-[22px]" : "block h-auto w-full"} />
+  );
+  return (
+    <figure className={className}>
+      {kind === "phone" ? (
+        <div className="overflow-hidden rounded-[28px] border border-black/10 bg-navy-deep p-1.5 shadow-[var(--shadow-xl)]">{video}</div>
+      ) : (
+        <div className="overflow-hidden rounded-[var(--radius-md)] border border-line bg-white shadow-[var(--shadow-xl)]">
+          <div className="flex items-center gap-2 border-b border-line bg-warm px-3 py-2">
+            <span aria-hidden className="flex gap-1.5">
+              <i className="block size-2.5 rounded-full bg-black/10" />
+              <i className="block size-2.5 rounded-full bg-black/10" />
+              <i className="block size-2.5 rounded-full bg-black/10" />
+            </span>
+            {url && <span className="mx-auto truncate rounded-[6px] bg-white px-3 py-0.5 text-[11px] text-[var(--color-text-tertiary)]">{url}</span>}
+            <span className="flex items-center gap-1.5 text-[11px] text-[var(--color-text-tertiary)]"><span className="size-1.5 rounded-full bg-error" />REC</span>
+          </div>
+          {video}
+        </div>
+      )}
+      {caption && <figcaption className={`mt-3 text-sm text-[var(--color-text-tertiary)] ${kind === "phone" ? "text-center" : ""}`}>{caption}</figcaption>}
+    </figure>
+  );
+}
+
 /** Phone screenshot with a rounded bezel. */
 export function PhoneFrame({ shot, priority = false, className = "", sizes = "260px" }: { shot: Shot; priority?: boolean; className?: string; sizes?: string }) {
   return (
