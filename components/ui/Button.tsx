@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 type Variant = "primary" | "white" | "outline" | "outlineLight" | "ghost";
@@ -39,6 +40,13 @@ export default function Button({ variant = "primary", size = "md", className = "
 
   if ("href" in props && props.href) {
     const { href, ...rest } = props as AsLink;
+    if (href.startsWith("/")) {
+      return (
+        <Link href={href} className={classes} {...rest}>
+          {children}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={classes} {...rest}>
         {children}

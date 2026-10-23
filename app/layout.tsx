@@ -21,7 +21,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
+  title: { default: title, template: "%s · Nelson Saenz" },
   description,
   openGraph: { title, description, type: "profile", url: "/", images: [{ url: "/headshot.jpg", width: 566, height: 566, alt: "Nelson Saenz" }] },
   twitter: { card: "summary", title, description, images: ["/headshot.jpg"] },

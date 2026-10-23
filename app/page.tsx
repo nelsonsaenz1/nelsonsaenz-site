@@ -1,50 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import BrandMark from "@/components/ui/BrandMark";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedNumber from "@/components/motion/AnimatedNumber";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import { Arrow, Bullets, Eyebrow, SectionHeading } from "@/components/ui/Text";
 import { certifications, education, experience, links, projects, stack } from "@/lib/content";
-
-const nav = [
-  ["Work", "#work"],
-  ["How I work", "#how"],
-  ["Experience", "#experience"],
-  ["Education", "#education"],
-  ["Contact", "#contact"],
-] as const;
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-accent">{children}</p>;
-}
-
-function SectionHeading({ eyebrow, title, intro, dark = false }: { eyebrow: string; title: string; intro?: string; dark?: boolean }) {
-  return (
-    <Reveal className="mb-14 max-w-3xl md:mb-16" amount={0.3}>
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className={`text-[clamp(2rem,4.5vw,3.25rem)] ${dark ? "text-white" : "text-ink"}`}>{title}</h2>
-      {intro && <p className={`mt-5 max-w-2xl text-lg leading-relaxed ${dark ? "text-white/80" : "text-[var(--color-text-secondary)]"}`}>{intro}</p>}
-    </Reveal>
-  );
-}
-
-function Bullets({ items, dark = false }: { items: string[]; dark?: boolean }) {
-  return (
-    <ul className={`space-y-2.5 text-[15px] leading-relaxed ${dark ? "text-white/80" : "text-[var(--color-text-secondary)]"}`}>
-      {items.map((h) => (
-        <li key={h} className="flex gap-3">
-          <span aria-hidden className={`mt-[0.65em] size-1.5 shrink-0 rounded-full ${dark ? "bg-sky" : "bg-accent"}`} />
-          <span>{h}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-const Arrow = () => (
-  <span aria-hidden className="inline-block transition-transform duration-[var(--dur-hover)] ease-[var(--ease-out)] group-hover:translate-x-0.5">
-    ↗
-  </span>
-);
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured);
@@ -52,29 +16,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Top bar */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-navy/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
-          <a href="#" className="font-serif text-xl tracking-[-0.02em] text-white">
-            Nelson Saenz
-          </a>
-          <nav className="hidden gap-7 text-sm text-white/70 md:flex">
-            {nav.map(([label, href]) => (
-              <a key={href} href={href} className="transition-colors duration-[var(--dur-hover)] ease-[var(--ease-out)] hover:text-white">
-                {label}
-              </a>
-            ))}
-          </nav>
-          <div className="hidden md:block">
-            <Button href={`mailto:${links.email}`} variant="white" size="sm">
-              Get in touch
-            </Button>
-          </div>
-          <a href="#contact" className="text-sm text-white/80 md:hidden">
-            Contact
-          </a>
-        </div>
-      </header>
+      <SiteHeader current="/" />
 
       <main id="main">
         {/* Hero */}
@@ -99,7 +41,7 @@ export default function Home() {
             <Reveal onMount y={12} delay={0.1} duration={0.6} className="mt-8 inline-flex">
               <span className="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-sm">
                 <span className="size-1.5 animate-pulse rounded-full bg-success" />
-                Open to product engineering roles · New York
+                Open to new roles · New York
               </span>
             </Reveal>
             <Reveal onMount y={24} delay={0.2} duration={0.9}>
@@ -170,11 +112,24 @@ export default function Home() {
               {featured.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.1} y={24}>
                   <Card tone="cream" padding="lg" className="flex h-full flex-col">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-2xl tracking-[-0.02em] text-ink">{p.name}</h3>
-                      <span className="text-xs text-[var(--color-text-tertiary)]">{p.period}</span>
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <BrandMark logo={p.logo} initials={p.initials} size="lg" />
+                        <div>
+                          <h3 className="text-2xl tracking-[-0.02em] text-ink">
+                            {p.caseStudy ? (
+                              <Link href={p.caseStudy} className="group underline-offset-4 hover:underline">
+                                {p.name}
+                              </Link>
+                            ) : (
+                              p.name
+                            )}
+                          </h3>
+                          <p className="mt-0.5 text-sm font-medium text-accent">{p.role}</p>
+                        </div>
+                      </div>
+                      <span className="order-first basis-full text-xs text-[var(--color-text-tertiary)] sm:order-none sm:basis-auto">{p.period}</span>
                     </div>
-                    <p className="mt-1 text-sm font-medium text-accent">{p.role}</p>
                     <p className="mt-5 text-lg leading-snug text-ink">{p.tagline}</p>
                     <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">{p.body}</p>
                     <ul className="mt-6 flex flex-wrap gap-2">
@@ -184,15 +139,18 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
-                    {p.links.length > 0 && (
-                      <div className="mt-7 flex flex-wrap gap-3">
-                        {p.links.map((l, j) => (
-                          <Button key={l.href} href={l.href} target="_blank" rel="noreferrer" variant={j === 0 ? "primary" : "ghost"} size="sm">
-                            {l.label}
-                          </Button>
-                        ))}
-                      </div>
-                    )}
+                    <div className="mt-7 flex flex-wrap gap-3">
+                      {p.caseStudy && (
+                        <Button href={p.caseStudy} variant="primary" size="sm">
+                          Read the case study
+                        </Button>
+                      )}
+                      {p.links.map((l, j) => (
+                        <Button key={l.href} href={l.href} target="_blank" rel="noreferrer" variant={!p.caseStudy && j === 0 ? "primary" : "ghost"} size="sm">
+                          {l.label}
+                        </Button>
+                      ))}
+                    </div>
                   </Card>
                 </Reveal>
               ))}
@@ -201,11 +159,16 @@ export default function Home() {
               {rest.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.08} y={20}>
                   <Card padding="md" className="flex h-full flex-col">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-xl tracking-[-0.02em] text-ink">{p.name}</h3>
-                      <span className="text-xs text-[var(--color-text-tertiary)]">{p.period}</span>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <BrandMark logo={p.logo} initials={p.initials} size="md" />
+                        <div>
+                          <h3 className="text-xl tracking-[-0.02em] text-ink">{p.name}</h3>
+                          <p className="mt-0.5 text-sm font-medium text-accent">{p.role}</p>
+                        </div>
+                      </div>
+                      <span className="shrink-0 text-xs text-[var(--color-text-tertiary)]">{p.period}</span>
                     </div>
-                    <p className="mt-1 text-sm font-medium text-accent">{p.role}</p>
                     <p className="mt-4 text-[15px] leading-snug text-ink">{p.tagline}</p>
                     <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">{p.body}</p>
                     {p.links.length > 0 && (
@@ -289,20 +252,32 @@ export default function Home() {
               {experience.map((e, i) => (
                 <Reveal key={e.company + e.role} delay={Math.min(i, 3) * 0.05} y={16} amount={0.2}>
                   <li className="grid gap-4 py-8 sm:grid-cols-[1fr_2fr] sm:gap-10">
-                    <div>
-                      <h3 className="text-2xl tracking-[-0.02em] text-ink">
-                        {e.href ? (
-                          <a href={e.href} target="_blank" rel="noreferrer" className="group underline-offset-4 hover:underline">
-                            {e.company} <Arrow />
-                          </a>
-                        ) : (
-                          e.company
+                    <div className="flex items-start gap-4">
+                      <BrandMark logo={e.logo} initials={e.initials} size="md" className="mt-1" />
+                      <div>
+                        <h3 className="text-2xl tracking-[-0.02em] text-ink">
+                          {e.caseStudy ? (
+                            <Link href={e.caseStudy} className="group underline-offset-4 hover:underline">
+                              {e.company} <Arrow />
+                            </Link>
+                          ) : e.href ? (
+                            <a href={e.href} target="_blank" rel="noreferrer" className="group underline-offset-4 hover:underline">
+                              {e.company} <Arrow />
+                            </a>
+                          ) : (
+                            e.company
+                          )}
+                        </h3>
+                        <p className="mt-1 text-sm font-medium text-accent">{e.role}</p>
+                        <p className="mt-1 text-sm text-[var(--color-text-tertiary)]">
+                          {e.period} · {e.where}
+                        </p>
+                        {e.caseStudy && (
+                          <Link href={e.caseStudy} className="mt-2 inline-block text-sm font-medium text-accent underline-offset-4 hover:underline">
+                            Case study →
+                          </Link>
                         )}
-                      </h3>
-                      <p className="mt-1 text-sm font-medium text-accent">{e.role}</p>
-                      <p className="mt-1 text-sm text-[var(--color-text-tertiary)]">
-                        {e.period} · {e.where}
-                      </p>
+                      </div>
                     </div>
                     <Bullets items={e.highlights} />
                   </li>
@@ -329,6 +304,7 @@ export default function Home() {
             <div className="grid gap-5 md:grid-cols-[1fr_2fr]">
               <Reveal y={16} amount={0.3}>
                 <Card tone="dark" padding="lg" className="h-full">
+                  <BrandMark logo={education.logo} size="lg" className="mb-6" />
                   <p className="text-2xl tracking-[-0.02em]">{education.degree}</p>
                   <p className="mt-1 text-sm text-white/70">
                     {education.graduation} · {education.where}
@@ -343,6 +319,7 @@ export default function Home() {
               </Reveal>
               <Reveal y={16} delay={0.1} amount={0.3}>
                 <Card padding="lg" className="h-full">
+                  <Image src={education.wordmark.src} alt={education.wordmark.alt} width={250} height={85} unoptimized className="mb-6 h-10 w-auto" />
                   <Bullets items={education.details} />
                 </Card>
               </Reveal>
@@ -360,11 +337,12 @@ export default function Home() {
             <Reveal amount={0.4}>
               <Eyebrow>Contact</Eyebrow>
               <h2 className="text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05] tracking-[-0.03em] text-white">
-                Hiring for product engineering, founding engineer, or forward-deployed roles?
+                Need someone who can build it, ship it, and own the numbers?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-                I'm in New York and open to on-site, hybrid, or remote. The fastest way to reach me is email. Everything on
-                this page is in the resume, and the code behind Cinch, MetaOrtho, and Soval is public on GitHub.
+                I'm open to anything where I get to build and own outcomes: product, engineering, operations, or a founding team.
+                Based in New York, happy with on-site, hybrid, or remote. Email is fastest. Everything on this page is in the
+                resume, and the code behind Cinch, MetaOrtho, and Soval is public on GitHub.
               </p>
             </Reveal>
             <Reveal delay={0.15} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -387,9 +365,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-navy-deep py-8 text-center text-sm text-white/45">
-        © {new Date().getFullYear()} Nelson Saenz · Built with Next.js, deployed on Vercel.
-      </footer>
+      <SiteFooter />
     </>
   );
 }

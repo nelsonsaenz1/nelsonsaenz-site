@@ -6,8 +6,19 @@ export const links = {
   site: "https://nelsonsaenz.vercel.app",
 };
 
+export type Logo = {
+  src: string;
+  alt: string;
+  /** cover: the image is already a tile (app icon). contain: pad it inside a white tile. */
+  fit?: "cover" | "contain";
+};
+
 export type Project = {
   name: string;
+  logo?: Logo;
+  initials?: string;
+  /** Internal case-study route. */
+  caseStudy?: string;
   role: string;
   period: string;
   tagline: string;
@@ -20,6 +31,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "Cinch",
+    logo: { src: "/cinch/icon.png", alt: "Cinch app icon", fit: "cover" },
+    caseStudy: "/cinch",
     role: "Founder & Product Engineer",
     period: "2026 — now",
     tagline: "An iOS wardrobe app that tells you what to wear from the clothes you actually own.",
@@ -34,6 +47,8 @@ export const projects: Project[] = [
   },
   {
     name: "MetaOrtho",
+    logo: { src: "/logos/metaortho-navy.svg", alt: "MetaOrtho monogram" },
+    caseStudy: "/metaortho",
     role: "Co-Founder · Product & Engineering Lead",
     period: "2025 — now",
     tagline: "Physician-led telehealth for musculoskeletal complications in GLP-1 patients.",
@@ -48,6 +63,7 @@ export const projects: Project[] = [
   },
   {
     name: "Agentic OS for Office Hours",
+    logo: { src: "/logos/officehours-icon.png", alt: "Office Hours logo" },
     role: "Client Solutions Associate",
     period: "2026 — now",
     tagline: "Turned an expert-network workflow into an AI operating system the whole team adopted.",
@@ -58,6 +74,7 @@ export const projects: Project[] = [
   },
   {
     name: "Soval AI",
+    initials: "S",
     role: "Founder",
     period: "2026",
     tagline: "Done-for-you personal AI assistants and small-business automation.",
@@ -70,6 +87,7 @@ export const projects: Project[] = [
   },
   {
     name: "Glacwell",
+    initials: "G",
     role: "CEO & Founder",
     period: "2026 — now",
     tagline: "An e-commerce operation run by a network of AI agents.",
@@ -79,6 +97,7 @@ export const projects: Project[] = [
   },
   {
     name: "Mastermind",
+    initials: "M",
     role: "Personal infrastructure",
     period: "ongoing",
     tagline: "A 24/7 multi-agent system running on a Mac Mini.",
@@ -90,6 +109,10 @@ export const projects: Project[] = [
 
 export type Experience = {
   company: string;
+  logo?: Logo;
+  initials?: string;
+  /** Internal case-study route. */
+  caseStudy?: string;
   role: string;
   period: string;
   where: string;
@@ -100,6 +123,8 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     company: "Cinch",
+    logo: { src: "/cinch/icon.png", alt: "Cinch app icon", fit: "cover" },
+    caseStudy: "/cinch",
     role: "Founder & Product Engineer",
     period: "2026 — Present",
     where: "New York",
@@ -112,6 +137,8 @@ export const experience: Experience[] = [
   },
   {
     company: "Office Hours",
+    logo: { src: "/logos/officehours-icon.png", alt: "Office Hours logo" },
+    href: "https://officehours.com",
     role: "Client Solutions Associate",
     period: "2026 — Present",
     where: "New York",
@@ -123,6 +150,8 @@ export const experience: Experience[] = [
   },
   {
     company: "MetaOrtho",
+    logo: { src: "/logos/metaortho-navy.svg", alt: "MetaOrtho monogram" },
+    caseStudy: "/metaortho",
     role: "Co-Founder, Product & Engineering Lead",
     period: "2025 — Present",
     where: "Remote",
@@ -134,6 +163,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Glacwell",
+    initials: "G",
     role: "CEO & Founder",
     period: "2026 — Present",
     where: "Dallas",
@@ -143,6 +173,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Better Brain",
+    logo: { src: "/logos/betterbrain-icon.png", alt: "Better Brain logo" },
     role: "Start-up Intern",
     period: "Jul — Aug 2025",
     where: "New York",
@@ -152,6 +183,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Broadway Bank",
+    logo: { src: "/logos/broadwaybank.png", alt: "Broadway Bank logo" },
     role: "Private Wealth Management Intern",
     period: "May — Jul 2025",
     where: "San Antonio",
@@ -161,6 +193,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Hey! Food is Ready",
+    logo: { src: "/logos/heyfood.png", alt: "Hey! Food is Ready logo" },
     role: "Summer Intern",
     period: "Jul — Aug 2024",
     where: "London",
@@ -171,6 +204,8 @@ export const experience: Experience[] = [
 ];
 
 export const education = {
+  logo: { src: "/logos/smu-mustang.svg", alt: "SMU Mustang logo" } as Logo,
+  wordmark: { src: "/logos/smu-wordmark.svg", alt: "Southern Methodist University" } as Logo,
   school: "Southern Methodist University, Cox School of Business",
   degree: "BBA, Finance",
   graduation: "May 2026",
