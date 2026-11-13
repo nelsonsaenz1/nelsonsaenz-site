@@ -24,10 +24,11 @@ export type Project = {
   caseStudy?: string;
   role: string;
   period: string;
-  tagline: string;
-  body: string;
+  tagline?: string;
+  body?: string;
   stack: string[];
-  links: { label: string; href: string }[];
+  /** A link marked primary becomes the card's main button, ahead of the case study. */
+  links: { label: string; href: string; primary?: boolean }[];
   featured?: boolean;
 };
 
@@ -43,6 +44,7 @@ export const projects: Project[] = [
       "Built, shipped, and operate it solo. The styling engine is deterministic and runs on-device: perceptual colour math in OKLCH, a beam search over the closet, and a linear model over named features that learns from every thumbs-up. A language model is used only to read a photo of a garment and write a sentence about a look the engine already chose. Row-level security is the security model, proven by pgTAP tests across four roles. Social layer: shared closets, event outfit voting, borrow requests.",
     stack: ["React Native", "Expo", "TypeScript", "Supabase", "PostgreSQL", "Edge Functions", "EAS", "App Store"],
     links: [
+      { label: "App Store", href: "https://apps.apple.com/us/app/cinch-outfit-planner-closet/id6798479578", primary: true },
       { label: "cinchstyle.com", href: "https://cinchstyle.com" },
       { label: "GitHub", href: "https://github.com/nelsonsaenz1/cinch" },
     ],
@@ -54,25 +56,25 @@ export const projects: Project[] = [
     caseStudy: "/metaortho",
     role: "Co-Founder · Product & Engineering Lead",
     period: "2025 — now",
-    tagline: "Physician-led telehealth for musculoskeletal complications in GLP-1 patients.",
+    tagline: "A physician-led GLP-1 care platform, built with my dad and an endocrinologist.",
     body:
-      "Solely designed and engineered the product end to end: marketing site, branching clinical assessment with tiered risk scoring, patient-portal dashboard, and cash-pay booking and checkout. Built a longitudinal health dashboard that rolls 28 biomarkers across six body systems into a single 0–100 GLP-1 Optimization Score with DEXA, lab, visit, and side-effect tracking. Took the site through LegitScript healthcare certification and helped two board-certified physicians launch from zero.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Vercel", "LegitScript"],
+      "I designed and wrote all of it, about 18k lines of TypeScript. A branching intake scores each patient into a risk tier and writes a brief for the physician. A patient portal tracks them over time. A GLP-1 Optimization Score rolls 28 biomarkers across six body systems into one number from 0 to 100. There are twelve compliance pages. We built it and never launched it to patients. You can still take the assessment.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Vercel"],
     links: [
+      { label: "Try the assessment", href: "https://metaortho.com/assessment", primary: true },
       { label: "metaortho.com", href: "https://metaortho.com" },
       { label: "GitHub", href: "https://github.com/nelsonsaenz1/metaortho" },
     ],
     featured: true,
   },
   {
-    name: "Internal tooling at Office Hours",
+    name: "AI skills my team runs on",
     logo: { src: "/logos/officehours.svg", alt: "Office Hours logo" },
-    role: "Client Solutions Associate",
+    role: "Office Hours · Client Solutions Associate",
     period: "2026 — now",
-    tagline: "Small AI-assisted tools that take repetitive steps out of expert-network project work.",
     body:
-      "Alongside the day job: reusable prompts and document templates that help turn a client brief into a structured project setup, shared outreach templates, and a simple Notion tracker. Built for my own workflow first and shared with teammates where it was useful.",
-    stack: ["Claude Code", "Custom skills", "Notion"],
+      "I designed and deployed the AI skills, templates and systems my pod uses every day. Four production skills, taken through 11+ versions in 30 days. They hold how we source, how we screen, and our compliance guardrails, so the method lives in the tool and anyone on the team can run it.",
+    stack: ["Claude Code", "Custom skills"],
     links: [],
   },
   {
@@ -80,8 +82,7 @@ export const projects: Project[] = [
     initials: "S",
     role: "Founder",
     period: "2026",
-    tagline: "Done-for-you personal AI assistants and small-business automation.",
-    body: "Marketing site plus an Agent Fit Quiz that scopes what an AI assistant could take off a small business owner's plate.",
+    body: "Before Office Hours, people paid me by the hour to sit next to them, build agents and workflows together, and teach them to run those on their own. That work became Soval AI.",
     stack: ["Next.js", "TypeScript", "Vercel"],
     links: [
       { label: "Live site", href: "https://soval-ai.vercel.app" },
@@ -93,8 +94,7 @@ export const projects: Project[] = [
     initials: "G",
     role: "CEO & Founder",
     period: "2026 — now",
-    tagline: "An e-commerce operation run by a network of AI agents.",
-    body: "Agents handle product research, ad optimization, and daily store operations 24/7, with human oversight limited to a single store manager leading day-to-day staff.",
+    tagline: "An e-commerce venture run by AI agents.",
     stack: ["AI agents", "Ads", "Supply chain"],
     links: [],
   },
@@ -147,7 +147,7 @@ export const experience: Experience[] = [
     where: "New York",
     highlights: [
       "Run expert-network projects end to end for investor and corporate clients: scoping briefs, sourcing and screening experts, and coordinating calls.",
-      "Built AI-assisted templates and a project tracker for my own workflow and shared them with teammates where they helped.",
+      "Designed and deployed the AI skills, templates and systems my pod uses every day. Four production skills, taken through 11+ versions in 30 days. They hold how we source, how we screen, and our compliance guardrails, so the method lives in the tool and anyone on the team can run it.",
     ],
   },
   {
@@ -159,7 +159,7 @@ export const experience: Experience[] = [
     where: "Remote",
     href: "https://metaortho.com",
     highlights: [
-      "Solely designed, engineered, and shipped a physician-led GLP-1 telehealth product: marketing site, branching clinical assessment with tiered risk scoring, patient portal, and cash-pay booking and checkout.",
+      "Designed and built a physician-led GLP-1 care platform end to end: branching intake with risk tiers and a physician brief, a patient portal, and twelve compliance pages. Built with two physicians. Not launched to patients.",
       "Built a longitudinal health dashboard that rolls 28 biomarkers across six body systems into a single 0–100 score with DEXA, lab, visit, and side-effect tracking.",
     ],
   },
@@ -170,7 +170,7 @@ export const experience: Experience[] = [
     period: "2026 — Present",
     where: "Dallas",
     highlights: [
-      "Founded an autonomous e-commerce operation run by AI agents that handle product research, ad optimization, and daily store operations, with a single store manager providing human oversight.",
+      "An e-commerce venture run by AI agents.",
     ],
   },
   {
@@ -233,10 +233,9 @@ export const stack = {
 };
 
 /** Shown under the hero and in the footer so the site never looks abandoned. Update the date when you touch content. */
-export const updated = "October 2026";
+export const updated = "November 2026";
 
 export const now = [
-  "Shipping Cinch updates to the App Store",
-  "Running MetaOrtho in production",
-  "Client solutions at Office Hours by day",
+  "Shipping Cinch updates",
+  "Building AI skills for my team at Office Hours",
 ];
