@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
+import ContactSection from "@/components/site/ContactSection";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { Bullets } from "@/components/ui/Text";
 import { BrowserFrame, CaseHero, CaseSection, Chips, FactGrid, NextCase, PhoneFrame, PhoneStrip, Split, StatStrip, VideoFrame, type Shot } from "@/components/case/CaseStudy";
-import { links } from "@/lib/content";
 
 const appStore = "https://apps.apple.com/us/app/cinch-outfit-planner-closet/id6798479578";
 
@@ -168,7 +167,7 @@ export default function CinchPage() {
           </Reveal>
         </CaseSection>
 
-        <CaseSection eyebrow="Decisions" title="Three calls I'd make again">
+        <CaseSection eyebrow="Decisions" title="Three decisions">
           <FactGrid
             facts={[
               {
@@ -210,28 +209,7 @@ export default function CinchPage() {
 
         <NextCase href="/metaortho" logo={{ src: "/logos/metaortho-navy.svg", alt: "MetaOrtho monogram" }} name="MetaOrtho" tagline="Physician-led GLP-1 telehealth, designed and engineered end to end." />
 
-        <section id="contact" className="relative overflow-hidden bg-navy py-24 text-center text-white md:py-28">
-          <div aria-hidden className="dot-grid-dark absolute inset-0 opacity-[0.04]" />
-          <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <Reveal amount={0.4}>
-              <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.03em] text-white">Want to talk through how any of this works?</h2>
-              <p className="mx-auto mt-5 max-w-xl text-lg text-white/80">The code is public. Happy to walk through the engine, the RLS test suite, or the release process.</p>
-            </Reveal>
-            <Reveal delay={0.15} className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={links.phoneHref} variant="white" size="lg">
-                Call or text {links.phone}
-              </Button>
-              <Button href={`mailto:${links.email}`} variant="outlineLight" size="lg">
-                {links.email}
-              </Button>
-            </Reveal>
-            <Reveal delay={0.25} y={0} className="mt-6">
-              <Link href="/" className="text-sm text-white/55 transition-colors hover:text-white">
-                ← Back to home
-              </Link>
-            </Reveal>
-          </div>
-        </section>
+        <ContactSection backHome />
       </main>
       <SiteFooter />
     </>
