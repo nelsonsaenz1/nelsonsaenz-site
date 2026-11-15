@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+/* Fonts are served from the repo (latin subset, SIL Open Font License) so the build never depends on Google Fonts. */
+const dmSans = localFont({
+  src: "./fonts/dm-sans-latin.woff2",
   variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "300 700",
+  display: "swap",
 });
 
-const dmSerif = DM_Serif_Display({
+const dmSerif = localFont({
+  src: "./fonts/dm-serif-display-latin.woff2",
   variable: "--font-dm-serif",
-  subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 const siteUrl = "https://nelsonsaenz.vercel.app";
