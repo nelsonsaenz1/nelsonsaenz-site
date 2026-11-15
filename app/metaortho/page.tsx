@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
+import ContactSection from "@/components/site/ContactSection";
 import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { Bullets } from "@/components/ui/Text";
 import { BrowserFrame, CaseHero, CaseSection, Chips, FactGrid, NextCase, PhoneFrame, Split, StatStrip, VideoFrame, type Shot } from "@/components/case/CaseStudy";
-import { links } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "MetaOrtho — physician-led GLP-1 telehealth, built end to end",
+  title: "MetaOrtho — a physician-led GLP-1 care platform, built end to end",
   description:
-    "Case study: MetaOrtho, a specialty GLP-1 telehealth practice. Marketing site, branching clinical assessment with tiered scoring, patient portal with a 28-biomarker optimization score, cash-pay booking, and LegitScript-ready compliance. Next.js, Supabase, Vercel.",
-  openGraph: { title: "MetaOrtho — case study", description: "Physician-led GLP-1 telehealth, designed and engineered end to end by one person.", images: [{ url: "/metaortho/home.jpg", width: 1440, height: 900 }] },
+    "Case study: MetaOrtho, a GLP-1 care platform built with two physicians. Branching clinical assessment with tiered scoring, patient portal with a 28-biomarker optimization score, and twelve compliance pages. Built, not launched. Next.js, Supabase, Vercel.",
+  openGraph: { title: "MetaOrtho — case study", description: "A GLP-1 care platform built with two physicians. Built, not launched.", images: [{ url: "/metaortho/home.jpg", width: 1440, height: 900 }] },
   alternates: { canonical: "/metaortho" },
 };
 
@@ -35,14 +33,14 @@ export default function MetaOrthoPage() {
       <main id="main">
         <CaseHero
           logo={{ src: "/logos/metaortho-navy.svg", alt: "MetaOrtho monogram" }}
-          kicker="Case study · Telehealth platform"
+          kicker="Case study · Care platform"
           title="MetaOrtho"
-          tagline="A physician-led specialty practice for people starting, taking, or questioning GLP-1 treatment. I designed and engineered the entire product and helped two board-certified physicians launch it from zero."
+          tagline="A GLP-1 care platform I built with my dad, who is an orthopedic surgeon, and an endocrinologist. The clinical model is theirs. Everything on the screen is mine. We never launched it to patients, so this page is about the build."
           meta={[
             ["Role", "Co-founder, product & engineering"],
             ["Timeline", "2025 — now"],
             ["Platform", "Web, Next.js on Vercel"],
-            ["Status", "Live, taking patients"],
+            ["Status", "Built, not launched"],
           ]}
           links={[
             { label: "Visit metaortho.com", href: "https://metaortho.com", primary: true },
@@ -56,16 +54,16 @@ export default function MetaOrthoPage() {
           stats={[
             { n: 28, label: "biomarkers rolled into one 0–100 score" },
             { n: 6, label: "body systems tracked over time" },
-            { n: 12, label: "legal and compliance pages, LegitScript-ready" },
+            { n: 12, label: "legal and compliance pages" },
             { n: 40, label: "components, about 18k lines of TypeScript" },
           ]}
         />
 
-        <CaseSection eyebrow="The product" title="GLP-1 care should be personalized, not one-size-fits-all." intro="Most GLP-1 telehealth is a prescription funnel. MetaOrtho is the opposite: an orthopedic surgeon and an endocrinologist reviewing candidacy, dose, side effects, and the bone, muscle, and joint consequences nobody else is monitoring.">
+        <CaseSection eyebrow="The product" title="GLP-1 care should be personalized, not one-size-fits-all." intro="Most GLP-1 telehealth is a prescription funnel. MetaOrtho was designed as the opposite: an orthopedic surgeon and an endocrinologist reviewing candidacy, dose, side effects, and the bone, muscle, and joint consequences nobody else is monitoring.">
           <Split
             aside={
               <Card tone="cream" padding="lg" className="h-full">
-                <h3 className="text-xl tracking-[-0.02em] text-ink">What I shipped</h3>
+                <h3 className="text-xl tracking-[-0.02em] text-ink">What I built</h3>
                 <Bullets
                   className="mt-5"
                   items={[
@@ -74,20 +72,19 @@ export default function MetaOrthoPage() {
                     "Cash-pay booking and consult request flow with transactional email and a Slack-notified waitlist for states not yet licensed.",
                     "Patient portal: protocol, labs, body composition (DEXA), side-effect tracking, and care team, behind Supabase auth.",
                     "GLP-1 Optimization Score: 28 biomarkers across six body systems rolled into a single 0–100 number that moves visit to visit.",
-                    "Compliance: LegitScript certification audit, HIPAA Notice of Privacy Practices, telehealth consent, cookie consent that never loads tracking on health pages, and an accessibility audit.",
+                    "Twelve compliance pages, including privacy, telehealth consent and accessibility.",
                   ]}
                 />
               </Card>
             }
           >
             <p>
-              MetaOrtho is a telemedicine practice founded with Dr. Jay M. Saenz, a board-certified orthopedic surgeon, and Dr. Kashif Latif, a board-certified
-              endocrinologist. The clinical model is theirs. Everything a patient touches on a screen is mine: brand, design system, copy, the assessment logic,
+              MetaOrtho is a GLP-1 care platform I built with Dr. Jay M. Saenz, a board-certified orthopedic surgeon, and Dr. Kashif Latif, a board-certified
+              endocrinologist. The clinical model is theirs. Everything on the screen is mine: brand, design system, copy, the assessment logic,
               the booking flow, the portal, the email, the legal pages, and the deploys.
             </p>
             <p>
-              The hard part was not the code. It was building something a healthcare compliance reviewer would certify, a nervous first-time patient would trust,
-              and two physicians with no product background could run without me on call. Every page carries the disclaimers it needs, every claim has a
+              The scoring is a typed question graph with plain rules. No trained model. I revised it with both physicians until they trusted what it said. Every page carries the disclaimers it needs, every claim has a
               source, and the free assessment is explicitly educational until a licensed clinician is in the loop.
             </p>
             <p>
@@ -97,7 +94,7 @@ export default function MetaOrthoPage() {
           </Split>
         </CaseSection>
 
-        <CaseSection tone="cream" eyebrow="Screens" title="The patient journey" intro="Captured from the live site. The full flow runs from a free assessment to a booked consult to a longitudinal portal.">
+        <CaseSection tone="cream" eyebrow="Screens" title="The patient journey" intro="Screens from the build. The assessment demo is open if you want to try it. The full flow runs from a free assessment to a booked consult to a longitudinal portal.">
           <div className="mb-14 grid gap-8 lg:grid-cols-[1.25fr_1fr] lg:items-center">
             <Reveal y={20}>
               <VideoFrame src="/metaortho/assessment-flow.mp4" poster="/metaortho/assessment-flow-poster.jpg" url="metaortho.com/assessment" label="Screen recording of the GLP-1 Management Profile assessment: answering age, sex, height, weight, and GLP-1 history questions as the progress bar advances" />
@@ -110,7 +107,7 @@ export default function MetaOrthoPage() {
                 what to ask next, so nobody sees a question that does not apply to them.
               </p>
               <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
-                Recorded on the live site in October 2026, with example answers.
+                Recorded in October 2026 with example answers.
               </p>
             </Reveal>
           </div>
@@ -132,13 +129,13 @@ export default function MetaOrthoPage() {
             <Reveal y={20}>
               <BrowserFrame shot={howItWorks} url="metaortho.com/how-it-works" />
             </Reveal>
-            <Reveal y={20} delay={0.1} className="flex justify-center gap-5 lg:flex-col">
-              <PhoneFrame shot={homeMobile} className="w-[200px] sm:w-[230px]" sizes="230px" />
-              <PhoneFrame shot={assessmentMobile} className="w-[200px] sm:w-[230px]" sizes="230px" />
+            <Reveal y={20} delay={0.1} className="flex justify-center gap-4 sm:gap-5 lg:flex-col">
+              <PhoneFrame shot={homeMobile} className="min-w-0 max-w-[230px] flex-1 lg:w-[230px] lg:flex-none" sizes="230px" />
+              <PhoneFrame shot={assessmentMobile} className="min-w-0 max-w-[230px] flex-1 lg:w-[230px] lg:flex-none" sizes="230px" />
             </Reveal>
           </div>
           <Reveal y={8} className="mt-6">
-            <p className="text-sm text-[var(--color-text-tertiary)]">Mobile first: most patients arrive from a phone, so every flow was designed at 390px before it was widened.</p>
+            <p className="text-sm text-[var(--color-text-tertiary)]">Mobile first: every flow was designed at 390px before it was widened.</p>
           </Reveal>
         </CaseSection>
 
@@ -173,24 +170,24 @@ export default function MetaOrthoPage() {
             ]}
           />
           <Reveal y={12} className="mt-10">
-            <Chips dark items={["Next.js 16", "React Server Components", "TypeScript", "Tailwind CSS 4", "framer-motion", "Supabase", "PostgreSQL", "@supabase/ssr", "Edge Functions", "Resend", "Slack", "Vercel", "LegitScript", "HIPAA NPP"]} />
+            <Chips dark items={["Next.js 16", "React Server Components", "TypeScript", "Tailwind CSS 4", "framer-motion", "Supabase", "PostgreSQL", "@supabase/ssr", "Edge Functions", "Resend", "Slack", "Vercel", "HIPAA NPP"]} />
           </Reveal>
         </CaseSection>
 
-        <CaseSection eyebrow="Decisions" title="Three calls I'd make again">
+        <CaseSection eyebrow="Decisions" title="Three decisions">
           <FactGrid
             facts={[
               {
                 h: "Free profile first, consult second.",
-                p: "A free, educational assessment is a far lower ask than a $400 booking. It qualifies patients, gives the physicians a structured brief before the visit, and is the single biggest conversion lever on the site.",
+                p: "A free assessment is a much smaller ask than a paid consult, and it hands the physician a structured brief before the visit.",
               },
               {
                 h: "Compliance as a feature, not a chore.",
-                p: "Writing the legal pages, consent flows, and source citations early meant the LegitScript review was a checklist rather than a rewrite, and every marketing claim had to earn its place.",
+                p: "Writing the legal pages, consent flows, and source citations early meant every marketing claim had to earn its place.",
               },
               {
                 h: "One number patients can watch.",
-                p: "Twenty-eight biomarkers are noise to a patient. A single 0–100 score that moves visit to visit is something they come back to check, which is the whole point of longitudinal care.",
+                p: "One number is easier to follow than twenty-eight.",
               },
             ]}
           />
@@ -198,28 +195,7 @@ export default function MetaOrthoPage() {
 
         <NextCase href="/cinch" logo={{ src: "/cinch/icon.png", alt: "Cinch app icon", fit: "cover" }} name="Cinch" tagline="An iOS wardrobe app with a deterministic on-device styling engine. Live on the App Store." />
 
-        <section id="contact" className="relative overflow-hidden bg-navy py-24 text-center text-white md:py-28">
-          <div aria-hidden className="dot-grid-dark absolute inset-0 opacity-[0.04]" />
-          <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8">
-            <Reveal amount={0.4}>
-              <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.03em] text-white">Building something regulated, clinical, or just hard?</h2>
-              <p className="mx-auto mt-5 max-w-xl text-lg text-white/80">I'm happy to walk through the assessment logic, the compliance work, or how the portal is put together.</p>
-            </Reveal>
-            <Reveal delay={0.15} className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={links.phoneHref} variant="white" size="lg">
-                Call or text {links.phone}
-              </Button>
-              <Button href={`mailto:${links.email}`} variant="outlineLight" size="lg">
-                {links.email}
-              </Button>
-            </Reveal>
-            <Reveal delay={0.25} y={0} className="mt-6">
-              <Link href="/" className="text-sm text-white/55 transition-colors hover:text-white">
-                ← Back to home
-              </Link>
-            </Reveal>
-          </div>
-        </section>
+        <ContactSection backHome />
       </main>
       <SiteFooter />
     </>

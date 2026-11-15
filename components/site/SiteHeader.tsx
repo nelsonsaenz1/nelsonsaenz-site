@@ -40,7 +40,7 @@ export default function SiteHeader({ current }: { current?: "/" | "/cinch" | "/m
         </nav>
         <div className="hidden md:block">
           <Button href={`mailto:${links.email}`} variant="white" size="sm">
-            Get in touch
+            Email me
           </Button>
         </div>
         <Link href={current && current !== "/" ? "/" : "/#contact"} className="text-sm text-white/80 md:hidden">

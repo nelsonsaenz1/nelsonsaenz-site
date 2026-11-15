@@ -6,7 +6,8 @@ import BrandMark from "@/components/ui/BrandMark";
 import Reveal from "@/components/motion/Reveal";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import { Arrow, Bullets, Eyebrow, SectionHeading } from "@/components/ui/Text";
+import ContactSection from "@/components/site/ContactSection";
+import { Arrow, Bullets, SectionHeading } from "@/components/ui/Text";
 import { certifications, education, experience, links, now, projects, stack, updated } from "@/lib/content";
 
 export default function Home() {
@@ -37,22 +38,15 @@ export default function Home() {
                 className="mx-auto size-28 rounded-full object-cover ring-1 ring-white/15 shadow-[0_0_60px_rgba(42,111,151,0.35)] sm:size-36"
               />
             </Reveal>
-            <Reveal onMount y={12} delay={0.1} duration={0.6} className="mt-8 inline-flex">
-              <span className="inline-flex items-center gap-2 rounded-[var(--radius-pill)] border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-sm">
-                <span className="size-1.5 animate-pulse rounded-full bg-success" />
-                Open to new roles · New York
-              </span>
-            </Reveal>
             <Reveal onMount y={24} delay={0.2} duration={0.9}>
               <h1 className="mx-auto mt-8 max-w-4xl text-[clamp(2.5rem,7vw,5.25rem)] leading-[1.02] tracking-[-0.04em] text-white">
-                I build AI-native products end to end, <span className="text-sky">then run them in production.</span>
+                I build software with the people who will use it.
               </h1>
             </Reveal>
             <Reveal onMount y={20} delay={0.35} duration={0.8}>
               <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed tracking-[-0.01em] text-white/80 md:text-xl">
-                Founder and builder. Solo-shipped a consumer iOS app to the App Store, engineered a physician-led telehealth
-                platform from zero, and work in client solutions at an expert network by day. Finance background, so I care
-                about conversion and retention as much as the code.
+                I'm Nelson. I built and shipped an iOS app on my own, built a GLP-1 care platform with two physicians, and
+                wrote the AI tools my team uses every day. I'm 23 and live in Manhattan.
               </p>
             </Reveal>
             <Reveal onMount y={16} delay={0.5} className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
@@ -95,8 +89,8 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
             <SectionHeading
               eyebrow="Work"
-              title="Things I built and operate"
-              intro="Two products in production with real users, plus the systems I use to build them."
+              title="Things I built"
+              intro="One app live on the App Store, one care platform built with two physicians, and the AI tools my team uses every day."
             />
             <div className="grid gap-5 md:grid-cols-2">
               {featured.map((p, i) => (
@@ -130,16 +124,25 @@ export default function Home() {
                       ))}
                     </ul>
                     <div className="mt-7 flex flex-wrap gap-3">
+                      {p.links
+                        .filter((l) => l.primary)
+                        .map((l) => (
+                          <Button key={l.href} href={l.href} target="_blank" rel="noreferrer" variant="primary" size="sm">
+                            {l.label}
+                          </Button>
+                        ))}
                       {p.caseStudy && (
-                        <Button href={p.caseStudy} variant="primary" size="sm">
+                        <Button href={p.caseStudy} variant={p.links.some((l) => l.primary) ? "ghost" : "primary"} size="sm">
                           Read the case study
                         </Button>
                       )}
-                      {p.links.map((l, j) => (
-                        <Button key={l.href} href={l.href} target="_blank" rel="noreferrer" variant={!p.caseStudy && j === 0 ? "primary" : "ghost"} size="sm">
-                          {l.label}
-                        </Button>
-                      ))}
+                      {p.links
+                        .filter((l) => !l.primary)
+                        .map((l) => (
+                          <Button key={l.href} href={l.href} target="_blank" rel="noreferrer" variant="ghost" size="sm">
+                            {l.label}
+                          </Button>
+                        ))}
                     </div>
                   </Card>
                 </Reveal>
@@ -159,8 +162,8 @@ export default function Home() {
                       </div>
                       <span className="shrink-0 text-xs text-[var(--color-text-tertiary)]">{p.period}</span>
                     </div>
-                    <p className="mt-4 text-[15px] leading-snug text-ink">{p.tagline}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">{p.body}</p>
+                    {p.tagline && <p className="mt-4 text-[15px] leading-snug text-ink">{p.tagline}</p>}
+                    {p.body && <p className={`${p.tagline ? "mt-2" : "mt-4"} text-sm leading-relaxed text-[var(--color-text-secondary)]`}>{p.body}</p>}
                     {p.links.length > 0 && (
                       <div className="mt-5 flex flex-wrap gap-4">
                         {p.links.map((l) => (
@@ -237,12 +240,12 @@ export default function Home() {
             <div className="grid gap-5 md:grid-cols-3">
               {[
                 {
-                  h: "AI as a force multiplier, not an excuse.",
+                  h: "How I use AI.",
                   p: "I use agents for parallel research, isolated worktrees, and verification, and I keep ownership of architecture, QA, product, and releases. The Cinch styling engine is deterministic and on-device; the model only does what it's actually better at.",
                 },
                 {
                   h: "Production over demos.",
-                  p: "Row-level security with pgTAP tests, idempotent commands, subscription reconciliation, offline recovery, append-only migrations. Things that are boring until they aren't.",
+                  p: "Row-level security with pgTAP tests, idempotent commands, subscription reconciliation, offline recovery, append-only migrations.",
                 },
                 {
                   h: "Adoption is the metric.",
@@ -317,49 +320,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact */}
-        <section id="contact" className="relative scroll-mt-20 overflow-hidden border-t border-white/10 bg-navy py-28 text-white md:py-36">
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div className="absolute left-1/2 top-1/2 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[160px]" />
-          </div>
-          <div aria-hidden className="dot-grid-dark absolute inset-0 opacity-[0.04]" />
-          <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
-            <Reveal amount={0.4}>
-              <Eyebrow>Contact</Eyebrow>
-              <h2 className="text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05] tracking-[-0.03em] text-white">
-                Need someone who can build it, ship it, and own the numbers?
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-                I'm open to anything where I get to build and own outcomes: product, engineering, operations, or a founding team.
-                Based in New York, happy with on-site, hybrid, or remote. Call or text any time, seriously. I pick up for
-                unknown numbers. Email works too. Everything on this page is in the resume, and the code behind Cinch,
-                MetaOrtho, and Soval is public on GitHub.
-              </p>
-            </Reveal>
-            <Reveal delay={0.15} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={links.phoneHref} variant="white" size="lg">
-                Call or text {links.phone}
-              </Button>
-              <Button href={`mailto:${links.email}`} variant="outlineLight" size="lg">
-                {links.email}
-              </Button>
-            </Reveal>
-            <Reveal delay={0.25} y={0} className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/55">
-              <a href={links.smsHref} className="transition-colors hover:text-white">
-                Text me
-              </a>
-              <a href={links.resume} download className="transition-colors hover:text-white">
-                Download resume
-              </a>
-              <a href={links.linkedin} target="_blank" rel="noreferrer" className="group transition-colors hover:text-white">
-                LinkedIn <Arrow />
-              </a>
-              <a href={links.github} target="_blank" rel="noreferrer" className="group transition-colors hover:text-white">
-                GitHub <Arrow />
-              </a>
-            </Reveal>
-          </div>
-        </section>
+        <ContactSection />
       </main>
 
       <SiteFooter />
